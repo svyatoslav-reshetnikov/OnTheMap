@@ -1,0 +1,431 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		769EDBC00C43AA927A0F7A00 /* Pods_OnTheMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE9FB326F8F1B398BA05E57 /* Pods_OnTheMap.framework */; };
+		E1A6487B1CF30F4100D44E74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A6487A1CF30F4100D44E74 /* AppDelegate.swift */; };
+		E1A6487D1CF30F4100D44E74 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A6487C1CF30F4100D44E74 /* LoginViewController.swift */; };
+		E1A648801CF30F4100D44E74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A6487E1CF30F4100D44E74 /* Main.storyboard */; };
+		E1A648821CF30F4100D44E74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A648811CF30F4100D44E74 /* Assets.xcassets */; };
+		E1A648851CF30F4100D44E74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A648831CF30F4100D44E74 /* LaunchScreen.storyboard */; };
+		E1A648901CF31B8A00D44E74 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A6488D1CF31B8A00D44E74 /* Roboto-Medium.ttf */; };
+		E1A648911CF31B8A00D44E74 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A6488E1CF31B8A00D44E74 /* Roboto-Regular.ttf */; };
+		E1A648921CF31B8A00D44E74 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A6488F1CF31B8A00D44E74 /* Roboto-Thin.ttf */; };
+		E1A648981CF33C8500D44E74 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A648971CF33C8500D44E74 /* Functions.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		29FCBCB2D8E74196942A2CAA /* Pods-OnTheMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnTheMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap.debug.xcconfig"; sourceTree = "<group>"; };
+		A241098DB7A9279B3DC559A2 /* Pods-OnTheMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnTheMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap.release.xcconfig"; sourceTree = "<group>"; };
+		AFE9FB326F8F1B398BA05E57 /* Pods_OnTheMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnTheMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1A648771CF30F4100D44E74 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1A6487A1CF30F4100D44E74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E1A6487C1CF30F4100D44E74 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E1A6487F1CF30F4100D44E74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E1A648811CF30F4100D44E74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E1A648841CF30F4100D44E74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E1A648861CF30F4100D44E74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E1A6488D1CF31B8A00D44E74 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "../../on the map assets/Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		E1A6488E1CF31B8A00D44E74 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../on the map assets/Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		E1A6488F1CF31B8A00D44E74 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "../../on the map assets/Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		E1A648971CF33C8500D44E74 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E1A648741CF30F4100D44E74 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				769EDBC00C43AA927A0F7A00 /* Pods_OnTheMap.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CAB58D7F7905A22657AE826D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFE9FB326F8F1B398BA05E57 /* Pods_OnTheMap.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1A6486E1CF30F4100D44E74 = {
+			isa = PBXGroup;
+			children = (
+				E1A648791CF30F4100D44E74 /* OnTheMap */,
+				E1A648781CF30F4100D44E74 /* Products */,
+				EC28CB4AC5AC2FD4F55AA724 /* Pods */,
+				CAB58D7F7905A22657AE826D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E1A648781CF30F4100D44E74 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1A648771CF30F4100D44E74 /* OnTheMap.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1A648791CF30F4100D44E74 /* OnTheMap */ = {
+			isa = PBXGroup;
+			children = (
+				E1A648961CF33C7800D44E74 /* Utils */,
+				E1A648941CF33C6500D44E74 /* Model */,
+				E1A648951CF33C6C00D44E74 /* View */,
+				E1A648931CF33C5E00D44E74 /* Controller */,
+				E1A6488C1CF31B4B00D44E74 /* Fonts */,
+				E1A6487A1CF30F4100D44E74 /* AppDelegate.swift */,
+				E1A6487E1CF30F4100D44E74 /* Main.storyboard */,
+				E1A648811CF30F4100D44E74 /* Assets.xcassets */,
+				E1A648831CF30F4100D44E74 /* LaunchScreen.storyboard */,
+				E1A648861CF30F4100D44E74 /* Info.plist */,
+			);
+			path = OnTheMap;
+			sourceTree = "<group>";
+		};
+		E1A6488C1CF31B4B00D44E74 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E1A6488D1CF31B8A00D44E74 /* Roboto-Medium.ttf */,
+				E1A6488E1CF31B8A00D44E74 /* Roboto-Regular.ttf */,
+				E1A6488F1CF31B8A00D44E74 /* Roboto-Thin.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		E1A648931CF33C5E00D44E74 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E1A6487C1CF30F4100D44E74 /* LoginViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		E1A648941CF33C6500D44E74 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		E1A648951CF33C6C00D44E74 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		E1A648961CF33C7800D44E74 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E1A648971CF33C8500D44E74 /* Functions.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		EC28CB4AC5AC2FD4F55AA724 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				29FCBCB2D8E74196942A2CAA /* Pods-OnTheMap.debug.xcconfig */,
+				A241098DB7A9279B3DC559A2 /* Pods-OnTheMap.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E1A648761CF30F4100D44E74 /* OnTheMap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1A648891CF30F4100D44E74 /* Build configuration list for PBXNativeTarget "OnTheMap" */;
+			buildPhases = (
+				0CC6C3B84C7DBA49EDDDD54B /* 📦 Check Pods Manifest.lock */,
+				E1A648731CF30F4100D44E74 /* Sources */,
+				E1A648741CF30F4100D44E74 /* Frameworks */,
+				E1A648751CF30F4100D44E74 /* Resources */,
+				D5C0D7A093622A94264A00A2 /* 📦 Embed Pods Frameworks */,
+				0A7ACD5CF58EE3F25E94AE89 /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OnTheMap;
+			productName = OnTheMap;
+			productReference = E1A648771CF30F4100D44E74 /* OnTheMap.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E1A6486F1CF30F4100D44E74 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = HiT2B;
+				TargetAttributes = {
+					E1A648761CF30F4100D44E74 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = E1A648721CF30F4100D44E74 /* Build configuration list for PBXProject "OnTheMap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E1A6486E1CF30F4100D44E74;
+			productRefGroup = E1A648781CF30F4100D44E74 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E1A648761CF30F4100D44E74 /* OnTheMap */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E1A648751CF30F4100D44E74 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1A648901CF31B8A00D44E74 /* Roboto-Medium.ttf in Resources */,
+				E1A648851CF30F4100D44E74 /* LaunchScreen.storyboard in Resources */,
+				E1A648921CF31B8A00D44E74 /* Roboto-Thin.ttf in Resources */,
+				E1A648911CF31B8A00D44E74 /* Roboto-Regular.ttf in Resources */,
+				E1A648821CF30F4100D44E74 /* Assets.xcassets in Resources */,
+				E1A648801CF30F4100D44E74 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A7ACD5CF58EE3F25E94AE89 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0CC6C3B84C7DBA49EDDDD54B /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D5C0D7A093622A94264A00A2 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E1A648731CF30F4100D44E74 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1A6487D1CF30F4100D44E74 /* LoginViewController.swift in Sources */,
+				E1A6487B1CF30F4100D44E74 /* AppDelegate.swift in Sources */,
+				E1A648981CF33C8500D44E74 /* Functions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E1A6487E1CF30F4100D44E74 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1A6487F1CF30F4100D44E74 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E1A648831CF30F4100D44E74 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1A648841CF30F4100D44E74 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E1A648871CF30F4100D44E74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E1A648881CF30F4100D44E74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E1A6488A1CF30F4100D44E74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29FCBCB2D8E74196942A2CAA /* Pods-OnTheMap.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = OnTheMap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hit2b.OnTheMap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E1A6488B1CF30F4100D44E74 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A241098DB7A9279B3DC559A2 /* Pods-OnTheMap.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = OnTheMap/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = hit2b.OnTheMap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E1A648721CF30F4100D44E74 /* Build configuration list for PBXProject "OnTheMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1A648871CF30F4100D44E74 /* Debug */,
+				E1A648881CF30F4100D44E74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1A648891CF30F4100D44E74 /* Build configuration list for PBXNativeTarget "OnTheMap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1A6488A1CF30F4100D44E74 /* Debug */,
+				E1A6488B1CF30F4100D44E74 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E1A6486F1CF30F4100D44E74 /* Project object */;
+}
