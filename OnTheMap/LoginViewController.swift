@@ -47,6 +47,39 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.layer.sublayers?.first?.frame = self.view.bounds
     }
     
+    // MARK: Actions
+    @IBAction func udacityAuth(sender: AnyObject) {
+        if loginTextField.text != "" {
+            if passwordTextField.text != "" {
+                // Hide keyboard
+                view.endEditing(true)
+                // Send request
+                UdacityClient.instance.udacityAuth(loginTextField.text!, password: passwordTextField.text!) { success, errorString in
+                    performUIUpdatesOnMain {
+                        if success {
+                            self.showAlert("Success! Your session id is: \(UdacityClient.instance.sessionID!)")
+                        } else {
+                            if let errorString = errorString {
+                                self.showAlert(errorString)
+                            }
+                        }
+                    }
+                }
+            } else {
+                self.showAlert("Password is empty!")
+            }
+        } else {
+            self.showAlert("Login is empty!")
+        }
+    }
+    
+    //
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     // MARK: UITextField delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()

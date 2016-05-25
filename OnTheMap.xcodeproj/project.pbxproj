@@ -8,14 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		769EDBC00C43AA927A0F7A00 /* Pods_OnTheMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE9FB326F8F1B398BA05E57 /* Pods_OnTheMap.framework */; };
+		E1009EBA1CF585C600B4B767 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1009EB91CF585C600B4B767 /* UdacityClient.swift */; };
+		E1009EBC1CF5860100B4B767 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1009EBB1CF5860100B4B767 /* UdacityConstants.swift */; };
+		E1009EBE1CF58CDA00B4B767 /* UdacityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1009EBD1CF58CDA00B4B767 /* UdacityFunctions.swift */; };
+		E1009EC71CF5B00800B4B767 /* list.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E1009EC01CF5B00800B4B767 /* list.pdf */; };
+		E1009EC81CF5B00800B4B767 /* map.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E1009EC11CF5B00800B4B767 /* map.pdf */; };
+		E1009EC91CF5B00800B4B767 /* pin.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E1009EC21CF5B00800B4B767 /* pin.pdf */; };
+		E1009ECA1CF5B00800B4B767 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1009EC31CF5B00800B4B767 /* Roboto-Medium.ttf */; };
+		E1009ECB1CF5B00800B4B767 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1009EC41CF5B00800B4B767 /* Roboto-Regular.ttf */; };
+		E1009ECC1CF5B00800B4B767 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1009EC51CF5B00800B4B767 /* Roboto-Thin.ttf */; };
+		E1009ECD1CF5B00800B4B767 /* udacity.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E1009EC61CF5B00800B4B767 /* udacity.pdf */; };
+		E1009ECF1CF5BCCA00B4B767 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1009ECE1CF5BCCA00B4B767 /* GCDBlackBox.swift */; };
 		E1A6487B1CF30F4100D44E74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A6487A1CF30F4100D44E74 /* AppDelegate.swift */; };
 		E1A6487D1CF30F4100D44E74 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A6487C1CF30F4100D44E74 /* LoginViewController.swift */; };
 		E1A648801CF30F4100D44E74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A6487E1CF30F4100D44E74 /* Main.storyboard */; };
 		E1A648821CF30F4100D44E74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A648811CF30F4100D44E74 /* Assets.xcassets */; };
 		E1A648851CF30F4100D44E74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A648831CF30F4100D44E74 /* LaunchScreen.storyboard */; };
-		E1A648901CF31B8A00D44E74 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A6488D1CF31B8A00D44E74 /* Roboto-Medium.ttf */; };
-		E1A648911CF31B8A00D44E74 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A6488E1CF31B8A00D44E74 /* Roboto-Regular.ttf */; };
-		E1A648921CF31B8A00D44E74 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1A6488F1CF31B8A00D44E74 /* Roboto-Thin.ttf */; };
 		E1A648981CF33C8500D44E74 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A648971CF33C8500D44E74 /* Functions.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +31,17 @@
 		29FCBCB2D8E74196942A2CAA /* Pods-OnTheMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnTheMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap.debug.xcconfig"; sourceTree = "<group>"; };
 		A241098DB7A9279B3DC559A2 /* Pods-OnTheMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnTheMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap.release.xcconfig"; sourceTree = "<group>"; };
 		AFE9FB326F8F1B398BA05E57 /* Pods_OnTheMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnTheMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1009EB91CF585C600B4B767 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		E1009EBB1CF5860100B4B767 /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
+		E1009EBD1CF58CDA00B4B767 /* UdacityFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityFunctions.swift; sourceTree = "<group>"; };
+		E1009EC01CF5B00800B4B767 /* list.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = list.pdf; path = Res/list.pdf; sourceTree = "<group>"; };
+		E1009EC11CF5B00800B4B767 /* map.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = map.pdf; path = Res/map.pdf; sourceTree = "<group>"; };
+		E1009EC21CF5B00800B4B767 /* pin.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = pin.pdf; path = Res/pin.pdf; sourceTree = "<group>"; };
+		E1009EC31CF5B00800B4B767 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "Res/Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		E1009EC41CF5B00800B4B767 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "Res/Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		E1009EC51CF5B00800B4B767 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "Res/Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		E1009EC61CF5B00800B4B767 /* udacity.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = udacity.pdf; path = Res/udacity.pdf; sourceTree = "<group>"; };
+		E1009ECE1CF5BCCA00B4B767 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		E1A648771CF30F4100D44E74 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A6487A1CF30F4100D44E74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1A6487C1CF30F4100D44E74 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -30,9 +49,6 @@
 		E1A648811CF30F4100D44E74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1A648841CF30F4100D44E74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1A648861CF30F4100D44E74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E1A6488D1CF31B8A00D44E74 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Medium.ttf"; path = "../../on the map assets/Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		E1A6488E1CF31B8A00D44E74 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "../../on the map assets/Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		E1A6488F1CF31B8A00D44E74 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "../../on the map assets/Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		E1A648971CF33C8500D44E74 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,8 +97,9 @@
 				E1A648941CF33C6500D44E74 /* Model */,
 				E1A648951CF33C6C00D44E74 /* View */,
 				E1A648931CF33C5E00D44E74 /* Controller */,
-				E1A6488C1CF31B4B00D44E74 /* Fonts */,
+				E1A6488C1CF31B4B00D44E74 /* Res */,
 				E1A6487A1CF30F4100D44E74 /* AppDelegate.swift */,
+				E1009ECE1CF5BCCA00B4B767 /* GCDBlackBox.swift */,
 				E1A6487E1CF30F4100D44E74 /* Main.storyboard */,
 				E1A648811CF30F4100D44E74 /* Assets.xcassets */,
 				E1A648831CF30F4100D44E74 /* LaunchScreen.storyboard */,
@@ -91,14 +108,18 @@
 			path = OnTheMap;
 			sourceTree = "<group>";
 		};
-		E1A6488C1CF31B4B00D44E74 /* Fonts */ = {
+		E1A6488C1CF31B4B00D44E74 /* Res */ = {
 			isa = PBXGroup;
 			children = (
-				E1A6488D1CF31B8A00D44E74 /* Roboto-Medium.ttf */,
-				E1A6488E1CF31B8A00D44E74 /* Roboto-Regular.ttf */,
-				E1A6488F1CF31B8A00D44E74 /* Roboto-Thin.ttf */,
+				E1009EC01CF5B00800B4B767 /* list.pdf */,
+				E1009EC11CF5B00800B4B767 /* map.pdf */,
+				E1009EC21CF5B00800B4B767 /* pin.pdf */,
+				E1009EC31CF5B00800B4B767 /* Roboto-Medium.ttf */,
+				E1009EC41CF5B00800B4B767 /* Roboto-Regular.ttf */,
+				E1009EC51CF5B00800B4B767 /* Roboto-Thin.ttf */,
+				E1009EC61CF5B00800B4B767 /* udacity.pdf */,
 			);
-			name = Fonts;
+			name = Res;
 			sourceTree = "<group>";
 		};
 		E1A648931CF33C5E00D44E74 /* Controller */ = {
@@ -112,6 +133,9 @@
 		E1A648941CF33C6500D44E74 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E1009EB91CF585C600B4B767 /* UdacityClient.swift */,
+				E1009EBB1CF5860100B4B767 /* UdacityConstants.swift */,
+				E1009EBD1CF58CDA00B4B767 /* UdacityFunctions.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -201,12 +225,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1A648901CF31B8A00D44E74 /* Roboto-Medium.ttf in Resources */,
+				E1009EC91CF5B00800B4B767 /* pin.pdf in Resources */,
+				E1009EC81CF5B00800B4B767 /* map.pdf in Resources */,
+				E1009ECB1CF5B00800B4B767 /* Roboto-Regular.ttf in Resources */,
+				E1009EC71CF5B00800B4B767 /* list.pdf in Resources */,
+				E1009ECD1CF5B00800B4B767 /* udacity.pdf in Resources */,
+				E1009ECA1CF5B00800B4B767 /* Roboto-Medium.ttf in Resources */,
 				E1A648851CF30F4100D44E74 /* LaunchScreen.storyboard in Resources */,
-				E1A648921CF31B8A00D44E74 /* Roboto-Thin.ttf in Resources */,
-				E1A648911CF31B8A00D44E74 /* Roboto-Regular.ttf in Resources */,
 				E1A648821CF30F4100D44E74 /* Assets.xcassets in Resources */,
 				E1A648801CF30F4100D44E74 /* Main.storyboard in Resources */,
+				E1009ECC1CF5B00800B4B767 /* Roboto-Thin.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,9 +293,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1009EBA1CF585C600B4B767 /* UdacityClient.swift in Sources */,
+				E1009EBE1CF58CDA00B4B767 /* UdacityFunctions.swift in Sources */,
+				E1009EBC1CF5860100B4B767 /* UdacityConstants.swift in Sources */,
 				E1A6487D1CF30F4100D44E74 /* LoginViewController.swift in Sources */,
 				E1A6487B1CF30F4100D44E74 /* AppDelegate.swift in Sources */,
 				E1A648981CF33C8500D44E74 /* Functions.swift in Sources */,
+				E1009ECF1CF5BCCA00B4B767 /* GCDBlackBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
