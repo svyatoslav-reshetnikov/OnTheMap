@@ -27,7 +27,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         hud.dimBackground = true
         
         // Send request
-        UdacityClient.instance.udacityLogout() { success, errorString in
+        OnTheMapClient.instance.udacityLogout() { success, errorString in
             performUIUpdatesOnMain {
                 
                 // Hide progress bar

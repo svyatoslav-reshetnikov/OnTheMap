@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension UdacityClient {
+extension OnTheMapClient {
     
     func udacityAuth(login: String, password: String, completionHandlerForUdacityAuth: (success: Bool, errorString: String?) -> Void) {
         
@@ -36,40 +36,46 @@ extension UdacityClient {
     }
     
     private func loginWithUsernamePassword(login: String, password: String, completionHandlerForLogin: (success: Bool, sessionID: String?, errorString: String?) -> Void) {
+        
         let parameters = [String:AnyObject]()
-        let jsonBody = "{\"udacity\": {\"\(UdacityClient.JSONBodyKeys.Username)\": \"\(login)\", \"\(UdacityClient.JSONBodyKeys.Password)\": \"\(password)\"}}"
-        taskForPOSTMethod(Methods.Session, parameters: parameters, jsonBody: jsonBody) { results, error in
+        let jsonBody = "{\"udacity\": {\"\(OnTheMapClient.JSONBodyKeys.Username)\": \"\(login)\", \"\(OnTheMapClient.JSONBodyKeys.Password)\": \"\(password)\"}}"
+        let url = udacityUrlFromParameters(parameters, withPathExtension: Methods.Session)
+        
+        taskForPOSTMethod(url, parameters: parameters, jsonBody: jsonBody) { results, error in
             if let error = error {
                 print(error)
                 completionHandlerForLogin(success: false, sessionID: nil, errorString: error.localizedDescription)
             } else {
-                if let session = results[UdacityClient.JSONResponseKeys.Session] as? [String: AnyObject] {
-                    if let sessionID = session[UdacityClient.JSONResponseKeys.SessionID] as? String {
+                if let session = results[OnTheMapClient.JSONResponseKeys.Session] as? [String: AnyObject] {
+                    if let sessionID = session[OnTheMapClient.JSONResponseKeys.SessionID] as? String {
                         completionHandlerForLogin(success: true, sessionID: sessionID, errorString: "")
                     } else {
-                        completionHandlerForLogin(success: false, sessionID: nil, errorString: "Could not find \(UdacityClient.JSONResponseKeys.SessionID) in \(session)")
+                        completionHandlerForLogin(success: false, sessionID: nil, errorString: "Could not find \(OnTheMapClient.JSONResponseKeys.SessionID) in \(session)")
                     }
                 } else {
-                    completionHandlerForLogin(success: false, sessionID: nil, errorString: "Could not find \(UdacityClient.JSONResponseKeys.Session) in \(results)")
+                    completionHandlerForLogin(success: false, sessionID: nil, errorString: "Could not find \(OnTheMapClient.JSONResponseKeys.Session) in \(results)")
                 }
             }
         }
     }
     
     private func logout(completionHandlerForLogin: (success: Bool, sessionID: String?, errorString: String?) -> Void) {
+        
         let parameters = [String:AnyObject]()
-        taskForDELETEMethod(Methods.Session, parameters: parameters) { results, error in
+        let url = udacityUrlFromParameters(parameters, withPathExtension: Methods.Session)
+        
+        taskForDELETEMethod(url, parameters: parameters) { results, error in
             if let error = error {
                 completionHandlerForLogin(success: false, sessionID: nil, errorString: error.localizedDescription)
             } else {
-                if let session = results[UdacityClient.JSONResponseKeys.Session] as? [String: AnyObject] {
-                    if let sessionID = session[UdacityClient.JSONResponseKeys.SessionID] as? String {
+                if let session = results[OnTheMapClient.JSONResponseKeys.Session] as? [String: AnyObject] {
+                    if let sessionID = session[OnTheMapClient.JSONResponseKeys.SessionID] as? String {
                         completionHandlerForLogin(success: true, sessionID: sessionID, errorString: "")
                     } else {
-                        completionHandlerForLogin(success: false, sessionID: nil, errorString: "Could not find \(UdacityClient.JSONResponseKeys.SessionID) in \(session)")
+                        completionHandlerForLogin(success: false, sessionID: nil, errorString: "Could not find \(OnTheMapClient.JSONResponseKeys.SessionID) in \(session)")
                     }
                 } else {
-                    completionHandlerForLogin(success: false, sessionID: nil, errorString: "Could not find \(UdacityClient.JSONResponseKeys.Session) in \(results)")
+                    completionHandlerForLogin(success: false, sessionID: nil, errorString: "Could not find \(OnTheMapClient.JSONResponseKeys.Session) in \(results)")
                 }
             }
         }

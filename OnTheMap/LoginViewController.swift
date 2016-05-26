@@ -67,7 +67,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 dismissKeyboard()
                 
                 // Send request
-                UdacityClient.instance.udacityAuth(loginTextField.text!, password: passwordTextField.text!) { success, errorString in
+                OnTheMapClient.instance.udacityAuth(loginTextField.text!, password: passwordTextField.text!) { success, errorString in
                     performUIUpdatesOnMain {
                         
                         // Hide progress bar

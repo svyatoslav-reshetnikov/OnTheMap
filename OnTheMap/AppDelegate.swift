@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let sessionID = NSUserDefaults.standardUserDefaults().objectForKey("sessionID") as? String {
             if sessionID != "" {
-                UdacityClient.instance.sessionID = sessionID
+                OnTheMapClient.instance.sessionID = sessionID
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let mainVC = storyboard.instantiateViewControllerWithIdentifier("mainVC") as! UITabBarController
                 self.window?.rootViewController = mainVC

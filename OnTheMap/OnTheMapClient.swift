@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - TMDBClient: NSObject
 
-class UdacityClient : NSObject {
+class OnTheMapClient : NSObject {
     
     // MARK: Properties
     
@@ -26,17 +26,17 @@ class UdacityClient : NSObject {
     var userID: Int? = nil
     
     // MARK: Shared Instance
-    static let instance = UdacityClient()
+    static let instance = OnTheMapClient()
     
     // MARK: GET
     
-    func taskForGETMethod(method: String, parameters: [String:AnyObject], completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func taskForGETMethod(url: NSURL, parameters: [String:AnyObject], completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         // I created a copy of the parameters, because variables in head of functions will be removed in Swift 3
         var mutableParameters = parameters
         mutableParameters[ParameterKeys.ApiKey] = Constants.ApiKey
         
-        let request = NSMutableURLRequest(URL: tmdbURLFromParameters(mutableParameters, withPathExtension: method))
+        let request = NSMutableURLRequest(URL: url)
         let task = session.dataTaskWithRequest(request) { data, response, error in
             
             func sendError(error: String) {
@@ -117,13 +117,13 @@ class UdacityClient : NSObject {
     
     // MARK: POST
     
-    func taskForPOSTMethod(method: String, parameters: [String:AnyObject], jsonBody: String, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func taskForPOSTMethod(url: NSURL, parameters: [String:AnyObject], jsonBody: String, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         // I created a copy of the parameters, because variables in head of functions will be removed in Swift 3
         var mutableParameters = parameters
         mutableParameters[ParameterKeys.ApiKey] = Constants.ApiKey
         
-        let request = NSMutableURLRequest(URL: tmdbURLFromParameters(mutableParameters, withPathExtension: method))
+        let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -162,18 +162,18 @@ class UdacityClient : NSObject {
     
     // MARK: DELETE
     
-    func taskForDELETEMethod(method: String, parameters: [String:AnyObject], completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func taskForDELETEMethod(url: NSURL, parameters: [String:AnyObject], completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         // I created a copy of the parameters, because variables in head of functions will be removed in Swift 3
         var mutableParameters = parameters
         mutableParameters[ParameterKeys.ApiKey] = Constants.ApiKey
         
-        let request = NSMutableURLRequest(URL: tmdbURLFromParameters(mutableParameters, withPathExtension: method))
+        let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "DELETE"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        if method == Methods.Session {
+        if url.absoluteString.rangeOfString(Methods.Session) != nil {
             var xsrfCookie: NSHTTPCookie? = nil
             let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
             for cookie in sharedCookieStorage.cookies! {
@@ -241,13 +241,26 @@ class UdacityClient : NSObject {
         completionHandlerForConvertData(result: parsedResult, error: nil)
     }
     
-    // create a URL from parameters
-    private func tmdbURLFromParameters(parameters: [String:AnyObject], withPathExtension: String? = nil) -> NSURL {
+    // Create an URL from parameters
+    private func createURLComponentWithParameters(parameters: [String:AnyObject]) -> NSURLComponents {
         
         let components = NSURLComponents()
-        components.scheme = UdacityClient.Constants.ApiScheme
-        components.host = UdacityClient.Constants.ApiHost
-        components.path = UdacityClient.Constants.ApiPath + (withPathExtension ?? "")
+        
+        for (key, value) in parameters {
+            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
+            components.queryItems!.append(queryItem)
+        }
+        
+        return components
+    }
+    
+    func udacityUrlFromParameters(parameters: [String:AnyObject], withPathExtension: String? = nil) -> NSURL {
+        
+        let components = createURLComponentWithParameters(parameters)
+        
+        components.scheme = OnTheMapClient.Constants.HTTPSScheme
+        components.host = OnTheMapClient.Constants.UdacityHost
+        components.path = OnTheMapClient.Constants.UdacityPath + (withPathExtension ?? "")
         components.queryItems = [NSURLQueryItem]()
         
         for (key, value) in parameters {
