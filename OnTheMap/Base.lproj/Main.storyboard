@@ -9,7 +9,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginVC" id="BYZ-38-t0r" customClass="LoginViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -190,7 +190,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="akD-DO-Vqu"/>
+                    <navigationItem key="navigationItem" id="akD-DO-Vqu">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="GmO-fe-iOD"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ru-KM-ouc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -220,7 +222,13 @@
                             <constraint firstItem="Ewz-mU-jtH" firstAttribute="top" secondItem="vvy-T8-9cQ" secondAttribute="top" id="pCq-dn-qlM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Lvl-Pv-3q7"/>
+                    <navigationItem key="navigationItem" id="Lvl-Pv-3q7">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="2ll-px-OzH">
+                            <connections>
+                                <action selector="logout:" destination="dff-Sa-NNS" id="PeC-ka-VxI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="Ewz-mU-jtH" id="iIm-fk-jcX"/>

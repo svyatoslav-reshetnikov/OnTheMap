@@ -160,6 +160,61 @@ class UdacityClient : NSObject {
         return task
     }
     
+    // MARK: DELETE
+    
+    func taskForDELETEMethod(method: String, parameters: [String:AnyObject], completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        // I created a copy of the parameters, because variables in head of functions will be removed in Swift 3
+        var mutableParameters = parameters
+        mutableParameters[ParameterKeys.ApiKey] = Constants.ApiKey
+        
+        let request = NSMutableURLRequest(URL: tmdbURLFromParameters(mutableParameters, withPathExtension: method))
+        request.HTTPMethod = "DELETE"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        if method == Methods.Session {
+            var xsrfCookie: NSHTTPCookie? = nil
+            let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+            for cookie in sharedCookieStorage.cookies! {
+                if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+            }
+            if let xsrfCookie = xsrfCookie {
+                request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+            }
+        }
+        
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            
+            func sendError(error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForPOST(result: nil, error: NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
+            }
+            
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error!.localizedDescription)")
+                return
+            }
+            
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+        }
+        
+        task.resume()
+        
+        return task
+    }
+    
     // MARK: Helpers
     
     // substitute the key for the value that is contained within the method name

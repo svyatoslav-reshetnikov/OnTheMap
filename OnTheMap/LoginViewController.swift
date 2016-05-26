@@ -19,7 +19,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // Const for set keyboard margin above UITextField
     let keyboardTopMargin: CGFloat = 32
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,7 +60,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 // Show progress bar
                 let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
                 hud.mode = MBProgressHUDMode.Indeterminate
-                hud.labelText = "Загрузка данных..."
+                hud.labelText = "Loading..."
                 hud.dimBackground = true
                 
                 // Dismiss keyboard
@@ -90,7 +90,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    //
     func showAlert(message: String) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
