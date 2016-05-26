@@ -15,6 +15,7 @@
 		E1009ECB1CF5B00800B4B767 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1009EC41CF5B00800B4B767 /* Roboto-Regular.ttf */; };
 		E1009ECC1CF5B00800B4B767 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1009EC51CF5B00800B4B767 /* Roboto-Thin.ttf */; };
 		E1009ECF1CF5BCCA00B4B767 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1009ECE1CF5BCCA00B4B767 /* GCDBlackBox.swift */; };
+		E135312F1CF7175C00A24655 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E135312E1CF7175C00A24655 /* MapViewController.swift */; };
 		E1A6487B1CF30F4100D44E74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A6487A1CF30F4100D44E74 /* AppDelegate.swift */; };
 		E1A6487D1CF30F4100D44E74 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A6487C1CF30F4100D44E74 /* LoginViewController.swift */; };
 		E1A648801CF30F4100D44E74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A6487E1CF30F4100D44E74 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		E1009EC41CF5B00800B4B767 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "Res/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		E1009EC51CF5B00800B4B767 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "Res/Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		E1009ECE1CF5BCCA00B4B767 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		E135312E1CF7175C00A24655 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		E1A648771CF30F4100D44E74 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1A6487A1CF30F4100D44E74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1A6487C1CF30F4100D44E74 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				E1A6487C1CF30F4100D44E74 /* LoginViewController.swift */,
+				E135312E1CF7175C00A24655 /* MapViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				E1A6487B1CF30F4100D44E74 /* AppDelegate.swift in Sources */,
 				E1A648981CF33C8500D44E74 /* Functions.swift in Sources */,
 				E1009ECF1CF5BCCA00B4B767 /* GCDBlackBox.swift in Sources */,
+				E135312F1CF7175C00A24655 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

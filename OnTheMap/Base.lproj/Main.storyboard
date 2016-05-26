@@ -196,10 +196,10 @@
             </objects>
             <point key="canvasLocation" x="2972" y="770"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="UOp-Tp-oiD">
             <objects>
-                <viewController id="dff-Sa-NNS" sceneMemberID="viewController">
+                <viewController id="dff-Sa-NNS" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Z4-mB-zG0"/>
                         <viewControllerLayoutGuide type="bottom" id="iyK-pQ-bih"/>
@@ -207,9 +207,24 @@
                     <view key="view" contentMode="scaleToFill" id="vvy-T8-9cQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ewz-mU-jtH">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ewz-mU-jtH" firstAttribute="centerX" secondItem="vvy-T8-9cQ" secondAttribute="centerX" id="208-y4-AxV"/>
+                            <constraint firstItem="Ewz-mU-jtH" firstAttribute="leading" secondItem="vvy-T8-9cQ" secondAttribute="leading" id="5Ie-2R-tVa"/>
+                            <constraint firstItem="Ewz-mU-jtH" firstAttribute="centerY" secondItem="vvy-T8-9cQ" secondAttribute="centerY" id="BY0-dL-mBN"/>
+                            <constraint firstItem="Ewz-mU-jtH" firstAttribute="top" secondItem="vvy-T8-9cQ" secondAttribute="top" id="pCq-dn-qlM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Lvl-Pv-3q7"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="Ewz-mU-jtH" id="iIm-fk-jcX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RlW-cC-HVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
