@@ -8,6 +8,7 @@
 
 import UIKit
 import Material
+import MBProgressHUD
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -30,6 +31,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let locations = [0.0, 0.5]
         let backgroundGradient = Functions().getGradientLayer(view.frame, colors: colors, locations: locations)
         view.layer.insertSublayer(backgroundGradient, atIndex: 0)
+        
+        // Hide keyboard when tap on background
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -49,15 +54,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Actions
     @IBAction func udacityAuth(sender: AnyObject) {
-        if loginTextField.text != "" {
+        if loginTextField.text != "" && Functions().validateEmail(loginTextField.text!) {
             if passwordTextField.text != "" {
-                // Hide keyboard
-                view.endEditing(true)
+                
+                // Show progress bar
+                let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+                hud.mode = MBProgressHUDMode.Indeterminate
+                hud.labelText = "Загрузка данных..."
+                hud.dimBackground = true
+                
+                // Dismiss keyboard
+                dismissKeyboard()
+                
                 // Send request
                 UdacityClient.instance.udacityAuth(loginTextField.text!, password: passwordTextField.text!) { success, errorString in
                     performUIUpdatesOnMain {
+                        
+                        // Hide progress bar
+                        MBProgressHUD.hideHUDForView(self.view, animated: true)
+                        
                         if success {
-                            self.showAlert("Success! Your session id is: \(UdacityClient.instance.sessionID!)")
+                            self.performSegueWithIdentifier("mainVC", sender: nil)
                         } else {
                             if let errorString = errorString {
                                 self.showAlert(errorString)
@@ -69,7 +86,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.showAlert("Password is empty!")
             }
         } else {
-            self.showAlert("Login is empty!")
+            self.showAlert("Login is invalid!")
         }
     }
     
@@ -82,7 +99,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: UITextField delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        if textField == loginTextField {
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            dismissKeyboard()
+            udacityAuth(self)
+        }
         return true
     }
 
@@ -119,6 +141,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func unsubscribeFromKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    // Set only portrait orientation
+    override func shouldAutorotate() -> Bool {
+        return false
+    }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return [.Portrait, .PortraitUpsideDown]
     }
     
 }

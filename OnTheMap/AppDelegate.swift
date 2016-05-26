@@ -15,7 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        if let sessionID = NSUserDefaults.standardUserDefaults().objectForKey("sessionID") as? String {
+            if sessionID != "" {
+                UdacityClient.instance.sessionID = sessionID
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let mainVC = storyboard.instantiateViewControllerWithIdentifier("mainVC") as! UITabBarController
+                self.window?.rootViewController = mainVC
+            }
+        }
+        
         return true
     }
 

@@ -14,7 +14,10 @@ extension UdacityClient {
         
         loginWithUsernamePassword(login, password: password) { success, sessionID, errorString in
             if let sessionID = sessionID {
+                // Save sessionID in the UdacityClient
                 self.sessionID = sessionID
+                // And in the NSUserDefaults
+                NSUserDefaults.standardUserDefaults().setObject(sessionID, forKey: "sessionID")
             }
             completionHandlerForUdacityAuth(success: success, errorString: errorString)
         }
