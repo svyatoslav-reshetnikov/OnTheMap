@@ -11,16 +11,21 @@ extension OnTheMapClient {
     // MARK: Constants
     struct Constants {
         
-        // MARK: API Key
-        static let ApiKey : String = "4e8bdccc3bb63cefbec21f936eca5651"
-        
-        // Schemes
+        // Standart
         static let HTTPSScheme = "https"
+        static let ApplicationJSON = "application/json"
+        
+        // MARK: Udacity keys
+        static let UdacityFacebookAppID = "365362206864879"
         
         // MARK: Udacity URLs
         static let UdacityHost = "www.udacity.com"
         static let UdacityPath = "/api"
-        static let UdacityAuthorizationURL : String = "https://www.themoviedb.org/authenticate/"
+        static let UdacityAuthorizationURL = "https://www.themoviedb.org/authenticate/"
+        
+        // MARK: Parse keys
+        static let ParseAppID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
+        static let ParseApiKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
         
         // MARK: Parse URLs
         static let ParseHost = "api.parse.com"
@@ -31,26 +36,25 @@ extension OnTheMapClient {
     struct Methods {
         
         // MARK: Udacity methods
+        
         // Session
         static let Session = "/session"
         
         // MARK: Parse methods
+        
         // StudentLocation
         static let StudentLocation = "/StudentLocation"
         
     }
     
-    // MARK: URL Keys
-    struct URLKeys {
-        static let UserID = "id"
-    }
-    
     // MARK: Parameter Keys
-    struct ParameterKeys {
-        static let ApiKey = "api_key"
-        static let SessionID = "session_id"
-        static let RequestToken = "request_token"
-        static let Query = "query"
+    struct JSONHeaderKeys {
+        
+        static let Accept = "Accept"
+        static let ContentType = "Content-Type"
+        
+        static let ParseAppIDHeader = "X-Parse-Application-Id"
+        static let ParseAPIKeyHeader = "X-Parse-REST-API-Key"
     }
     
     // MARK: JSON Body Keys
@@ -67,9 +71,27 @@ extension OnTheMapClient {
     // MARK: JSON Response Keys
     struct JSONResponseKeys {
         
-        // MARK: Session
+        // MARK: Udacity keys
+        
+        // Session
         static let Session = "session"
         static let SessionID = "id"
+        
+        // MARK: Parse keys
+        
+        // Students information
+        static let Results = "results"
+        
+        static let CreatedAt = "createdAt"
+        static let FirstName = "firstName"
+        static let LastName = "lastName"
+        static let Latitude = "latitude"
+        static let Longitude = "longitude"
+        static let MapString = "mapString"
+        static let MediaURL = "mediaURL"
+        static let ObjectId = "objectId"
+        static let UniqueKey = "uniqueKey"
+        static let UpdatedAt = "updatedAt"
         
     }
     

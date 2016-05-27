@@ -177,10 +177,10 @@
             </objects>
             <point key="canvasLocation" x="565" y="440"/>
         </scene>
-        <!--View Controller-->
+        <!--Students Table View Controller-->
         <scene sceneID="3Hg-c3-bzA">
             <objects>
-                <viewController id="EBN-Au-OLe" sceneMemberID="viewController">
+                <viewController id="EBN-Au-OLe" customClass="StudentsTableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7kA-L0-Ul1"/>
                         <viewControllerLayoutGuide type="bottom" id="1A2-I4-tuu"/>
@@ -188,20 +188,39 @@
                     <view key="view" contentMode="scaleToFill" id="2x0-oQ-4CA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ALO-io-CJk">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="EBN-Au-OLe" id="ghN-V1-btg"/>
+                                    <outlet property="delegate" destination="EBN-Au-OLe" id="Pi5-hg-iZN"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ALO-io-CJk" firstAttribute="centerY" secondItem="2x0-oQ-4CA" secondAttribute="centerY" id="TAF-OG-tKf"/>
+                            <constraint firstItem="ALO-io-CJk" firstAttribute="top" secondItem="2x0-oQ-4CA" secondAttribute="top" id="Tfn-wm-biE"/>
+                            <constraint firstItem="ALO-io-CJk" firstAttribute="centerX" secondItem="2x0-oQ-4CA" secondAttribute="centerX" id="f2s-ez-dBa"/>
+                            <constraint firstItem="ALO-io-CJk" firstAttribute="leading" secondItem="2x0-oQ-4CA" secondAttribute="leading" id="fAh-pj-kMP"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="akD-DO-Vqu">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="GmO-fe-iOD"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="studentsTable" destination="ALO-io-CJk" id="CFI-Lk-dmA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ru-KM-ouc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2972" y="770"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Students Map View Controller-->
         <scene sceneID="UOp-Tp-oiD">
             <objects>
-                <viewController id="dff-Sa-NNS" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dff-Sa-NNS" customClass="StudentsMapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Z4-mB-zG0"/>
                         <viewControllerLayoutGuide type="bottom" id="iyK-pQ-bih"/>
@@ -211,15 +230,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ewz-mU-jtH">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="507"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dff-Sa-NNS" id="gmn-Vb-kxV"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ewz-mU-jtH" firstAttribute="centerX" secondItem="vvy-T8-9cQ" secondAttribute="centerX" id="208-y4-AxV"/>
                             <constraint firstItem="Ewz-mU-jtH" firstAttribute="leading" secondItem="vvy-T8-9cQ" secondAttribute="leading" id="5Ie-2R-tVa"/>
-                            <constraint firstItem="Ewz-mU-jtH" firstAttribute="centerY" secondItem="vvy-T8-9cQ" secondAttribute="centerY" id="BY0-dL-mBN"/>
-                            <constraint firstItem="Ewz-mU-jtH" firstAttribute="top" secondItem="vvy-T8-9cQ" secondAttribute="top" id="pCq-dn-qlM"/>
+                            <constraint firstItem="Ewz-mU-jtH" firstAttribute="centerY" secondItem="vvy-T8-9cQ" secondAttribute="centerY" constant="-2.5" id="BY0-dL-mBN"/>
+                            <constraint firstItem="Ewz-mU-jtH" firstAttribute="top" secondItem="vvy-T8-9cQ" secondAttribute="top" constant="44" id="pCq-dn-qlM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Lvl-Pv-3q7">

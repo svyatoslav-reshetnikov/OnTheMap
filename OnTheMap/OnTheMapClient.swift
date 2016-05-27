@@ -17,26 +17,41 @@ class OnTheMapClient : NSObject {
     // shared session
     var session = NSURLSession.sharedSession()
     
-    // configuration object
-    //var config = TMDBConfig()
-    
     // authentication state
     var requestToken: String? = nil
     var sessionID: String? = nil
-    var userID: Int? = nil
+    var students = [StudentIndormation]()
     
     // MARK: Shared Instance
     static let instance = OnTheMapClient()
     
-    // MARK: GET
-    
-    func taskForGETMethod(url: NSURL, parameters: [String:AnyObject], completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
-        
-        // I created a copy of the parameters, because variables in head of functions will be removed in Swift 3
-        var mutableParameters = parameters
-        mutableParameters[ParameterKeys.ApiKey] = Constants.ApiKey
+    // MARK: Create request
+    func createRequest(url: NSURL) -> NSMutableURLRequest {
         
         let request = NSMutableURLRequest(URL: url)
+        
+        request.addValue(Constants.ApplicationJSON, forHTTPHeaderField: JSONHeaderKeys.Accept)
+        request.addValue(Constants.ApplicationJSON, forHTTPHeaderField: JSONHeaderKeys.ContentType)
+        
+        return request
+    }
+    
+    func createParseRequest(url: NSURL) -> NSMutableURLRequest {
+        
+        let request = createRequest(url)
+        
+        request.addValue(Constants.ParseAppID, forHTTPHeaderField: JSONHeaderKeys.ParseAppIDHeader)
+        request.addValue(Constants.ParseApiKey, forHTTPHeaderField: JSONHeaderKeys.ParseAPIKeyHeader)
+        
+        return request
+        
+    }
+    
+    // MARK: GET
+    
+    func taskForGETMethod(request: NSMutableURLRequest, completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        request.HTTPMethod = "GET"
         let task = session.dataTaskWithRequest(request) { data, response, error in
             
             func sendError(error: String) {
@@ -60,7 +75,12 @@ class OnTheMapClient : NSObject {
                 return
             }
             
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
+            // Different conver functions for Udacity and Parse responses
+            if request.URL!.absoluteString.rangeOfString(JSONBodyKeys.Udacity) != nil{
+                self.convertDataFromUdacityWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
+            } else {
+                self.convertDataFromParseWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
+            }
         }
         
         task.resume()
@@ -117,16 +137,9 @@ class OnTheMapClient : NSObject {
     
     // MARK: POST
     
-    func taskForPOSTMethod(url: NSURL, parameters: [String:AnyObject], jsonBody: String, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func taskForPOSTMethod(request: NSMutableURLRequest, jsonBody: String, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        // I created a copy of the parameters, because variables in head of functions will be removed in Swift 3
-        var mutableParameters = parameters
-        mutableParameters[ParameterKeys.ApiKey] = Constants.ApiKey
-        
-        let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.HTTPBody = jsonBody.dataUsingEncoding(NSUTF8StringEncoding)
         
         let task = session.dataTaskWithRequest(request) { data, response, error in
@@ -152,7 +165,12 @@ class OnTheMapClient : NSObject {
                 return
             }
             
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+            // Different conver functions for Udacity and Parse responses
+            if request.URL!.absoluteString.rangeOfString(JSONBodyKeys.Udacity) != nil{
+                self.convertDataFromUdacityWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+            } else {
+                self.convertDataFromParseWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+            }
         }
         
         task.resume()
@@ -162,34 +180,16 @@ class OnTheMapClient : NSObject {
     
     // MARK: DELETE
     
-    func taskForDELETEMethod(url: NSURL, parameters: [String:AnyObject], completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func taskForDELETEMethod(request: NSMutableURLRequest, completionHandlerForDELETE: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        // I created a copy of the parameters, because variables in head of functions will be removed in Swift 3
-        var mutableParameters = parameters
-        mutableParameters[ParameterKeys.ApiKey] = Constants.ApiKey
-        
-        let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "DELETE"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        if url.absoluteString.rangeOfString(Methods.Session) != nil {
-            var xsrfCookie: NSHTTPCookie? = nil
-            let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
-            for cookie in sharedCookieStorage.cookies! {
-                if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
-            }
-            if let xsrfCookie = xsrfCookie {
-                request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
-            }
-        }
         
         let task = session.dataTaskWithRequest(request) { data, response, error in
             
             func sendError(error: String) {
                 print(error)
                 let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandlerForPOST(result: nil, error: NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
+                completionHandlerForDELETE(result: nil, error: NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
             }
             
             guard (error == nil) else {
@@ -207,7 +207,12 @@ class OnTheMapClient : NSObject {
                 return
             }
             
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+            // Different conver functions for Udacity and Parse responses
+            if request.URL!.absoluteString.rangeOfString(JSONBodyKeys.Udacity) != nil{
+                self.convertDataFromUdacityWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForDELETE)
+            } else {
+                self.convertDataFromParseWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForDELETE)
+            }
         }
         
         task.resume()
@@ -227,11 +232,25 @@ class OnTheMapClient : NSObject {
     }
     
     // given raw JSON, return a usable Foundation object
-    private func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
+    private func convertDataFromUdacityWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
         
         var parsedResult: AnyObject!
         do {
             parsedResult = try NSJSONSerialization.JSONObjectWithData(data.subdataWithRange(NSMakeRange(5, data.length - 5)), options: .AllowFragments)
+            print(parsedResult)
+        } catch {
+            let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
+            completionHandlerForConvertData(result: nil, error: NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
+        }
+        
+        completionHandlerForConvertData(result: parsedResult, error: nil)
+    }
+    
+    private func convertDataFromParseWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
+        
+        var parsedResult: AnyObject!
+        do {
+            parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
             print(parsedResult)
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
@@ -248,7 +267,8 @@ class OnTheMapClient : NSObject {
         
         for (key, value) in parameters {
             let queryItem = NSURLQueryItem(name: key, value: "\(value)")
-            components.queryItems!.append(queryItem)
+            var queryItems = components.queryItems ?? [NSURLQueryItem]()
+            queryItems.append(queryItem)
         }
         
         return components
@@ -261,6 +281,23 @@ class OnTheMapClient : NSObject {
         components.scheme = OnTheMapClient.Constants.HTTPSScheme
         components.host = OnTheMapClient.Constants.UdacityHost
         components.path = OnTheMapClient.Constants.UdacityPath + (withPathExtension ?? "")
+        components.queryItems = [NSURLQueryItem]()
+        
+        for (key, value) in parameters {
+            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
+            components.queryItems!.append(queryItem)
+        }
+        
+        return components.URL!
+    }
+    
+    func parseUrlFromParameters(parameters: [String:AnyObject], withPathExtension: String? = nil) -> NSURL {
+        
+        let components = createURLComponentWithParameters(parameters)
+        
+        components.scheme = OnTheMapClient.Constants.HTTPSScheme
+        components.host = OnTheMapClient.Constants.ParseHost
+        components.path = OnTheMapClient.Constants.ParsePath + (withPathExtension ?? "")
         components.queryItems = [NSURLQueryItem]()
         
         for (key, value) in parameters {
