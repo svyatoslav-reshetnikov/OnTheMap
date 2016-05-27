@@ -7,15 +7,81 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class StudentsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var studentsTable: UITableView!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
+    @IBOutlet weak var setPinButton: UIBarButtonItem!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction func logout(sender: AnyObject) {
         
+        lockInterface()
         
+        // Show progress bar
+        let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+        hud.mode = MBProgressHUDMode.Indeterminate
+        hud.labelText = "Loading..."
+        hud.dimBackground = true
+        
+        // Send request
+        OnTheMapClient.instance.udacityLogout() { success, errorString in
+            performUIUpdatesOnMain {
+                
+                self.unlockInterFace()
+                
+                // Hide progress bar
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                
+                if success {
+                    // Remove current screen with animation
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let loginVC = storyboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
+                    
+                    let snapshot: UIView = self.view.snapshotViewAfterScreenUpdates(true)
+                    loginVC.view.addSubview(snapshot)
+                    UIApplication.sharedApplication().keyWindow?.rootViewController = loginVC
+                    
+                    Animations().scaleAndHide(snapshot)
+                } else {
+                    if let errorString = errorString {
+                        self.showAlert(errorString)
+                    }
+                }
+            }
+        }
+    }
+    
+    @IBAction func getStudents(sender: AnyObject) {
+        
+        lockInterface()
+        
+        // Show progress bar
+        let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+        hud.mode = MBProgressHUDMode.Indeterminate
+        hud.labelText = "Loading..."
+        hud.dimBackground = true
+        
+        OnTheMapClient.instance.getStudents(100, completionHandler: { success, errorString in
+            
+            performUIUpdatesOnMain {
+                
+                self.unlockInterFace()
+                
+                // Hide progress bar
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                
+                if success {
+                    self.studentsTable.reloadData()
+                } else {
+                    if let errorString = errorString {
+                        self.showAlert(errorString)
+                    }
+                }
+            }
+        })
     }
     
     func showAlert(message: String) {
@@ -39,6 +105,7 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
         let firstName = OnTheMapClient.instance.students[indexPath.row].firstName
         let lastName = OnTheMapClient.instance.students[indexPath.row].lastName
         
+        cell?.imageView?.image = UIImage(named: "pinIcon")
         cell!.textLabel?.text = (firstName != nil ? firstName! + " " : "") + (lastName != nil ? lastName! : "")
         
         return cell!
@@ -57,4 +124,17 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
+    func lockInterface() {
+        tabBarController?.tabBar.userInteractionEnabled = false
+        refreshButton.enabled = false
+        setPinButton.enabled = false
+        logoutButton.enabled = false
+    }
+    
+    func unlockInterFace() {
+        tabBarController?.tabBar.userInteractionEnabled = true
+        refreshButton.enabled = true
+        setPinButton.enabled = true
+        logoutButton.enabled = true
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  MapViewController.swift
+//  StudentsMapViewController.swift
 //  OnTheMap
 //
 //  Created by SVYAT on 26.05.16.
@@ -13,41 +13,19 @@ import MBProgressHUD
 class StudentsMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
+    @IBOutlet weak var setPinButton: UIBarButtonItem!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Show progress bar
-        let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-        hud.mode = MBProgressHUDMode.Indeterminate
-        hud.labelText = "Loading..."
-        hud.dimBackground = true
-        
-        OnTheMapClient.instance.getStudents(100, completionHandler: { success, errorString in
-            
-            performUIUpdatesOnMain {
-                
-                // Hide progress bar
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
-                
-                if success {
-                    for student in OnTheMapClient.instance.students {
-                        let studentAnnotation = StudentAnnotation(title: (student.firstName != nil ? student.firstName! + " " : "") + (student.lastName != nil ? student.lastName! : ""),
-                            subtitle: student.mediaURL != nil ? student.mediaURL! : "",
-                            coordinate: CLLocationCoordinate2D(latitude: (student.latitude != nil ? student.latitude! : 0.0), longitude: (student.longitude != nil ? student.longitude! : 0.0)))
-                        
-                        self.mapView.addAnnotation(studentAnnotation)
-                    }
-                } else {
-                    if let errorString = errorString {
-                        self.showAlert(errorString)
-                    }
-                }
-            }
-        })
+        getStudents(self)
     }
     
     @IBAction func logout(sender: AnyObject) {
+        
+        lockInterface()
         
         // Show progress bar
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
@@ -58,6 +36,8 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
         // Send request
         OnTheMapClient.instance.udacityLogout() { success, errorString in
             performUIUpdatesOnMain {
+                
+                self.unlockInterFace()
                 
                 // Hide progress bar
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
@@ -81,6 +61,46 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    @IBAction func getStudents(sender: AnyObject) {
+        
+        lockInterface()
+        
+        // Show progress bar
+        let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+        hud.mode = MBProgressHUDMode.Indeterminate
+        hud.labelText = "Loading..."
+        hud.dimBackground = true
+        
+        OnTheMapClient.instance.getStudents(100, completionHandler: { success, errorString in
+            
+            performUIUpdatesOnMain {
+                
+                self.unlockInterFace()
+                
+                // Clean the map
+                let annotationsToRemove = self.mapView.annotations.filter { $0 !== self.mapView.userLocation }
+                self.mapView.removeAnnotations( annotationsToRemove)
+                
+                // Hide progress bar
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                
+                if success {
+                    for student in OnTheMapClient.instance.students {
+                        let studentAnnotation = StudentAnnotation(title: (student.firstName != nil ? student.firstName! + " " : "") + (student.lastName != nil ? student.lastName! : ""),
+                            subtitle: student.mediaURL != nil ? student.mediaURL! : "",
+                            coordinate: CLLocationCoordinate2D(latitude: (student.latitude != nil ? student.latitude! : 0.0), longitude: (student.longitude != nil ? student.longitude! : 0.0)))
+                        
+                        self.mapView.addAnnotation(studentAnnotation)
+                    }
+                } else {
+                    if let errorString = errorString {
+                        self.showAlert(errorString)
+                    }
+                }
+            }
+        })
+    }
+    
     func showAlert(message: String) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
@@ -99,9 +119,8 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
         if annotationView != nil {
             return annotationView
         } else {
-            let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             annotationView.canShowCallout = true
-            annotationView.image = UIImage(named: "pinIcon")
             let button = UIButton(type: .DetailDisclosure)
             annotationView.rightCalloutAccessoryView = button
             return annotationView
@@ -121,4 +140,19 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
+    
+    func lockInterface() {
+        tabBarController?.tabBar.userInteractionEnabled = false
+        refreshButton.enabled = false
+        setPinButton.enabled = false
+        logoutButton.enabled = false
+    }
+    
+    func unlockInterFace() {
+        tabBarController?.tabBar.userInteractionEnabled = true
+        refreshButton.enabled = true
+        setPinButton.enabled = true
+        logoutButton.enabled = true
+    }
+    
 }

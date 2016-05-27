@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -207,9 +208,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="akD-DO-Vqu">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="GmO-fe-iOD"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="GmO-fe-iOD">
+                            <connections>
+                                <action selector="logout:" destination="EBN-Au-OLe" id="8NA-5Y-qsd"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="74L-7v-8wT">
+                                <connections>
+                                    <action selector="getStudents:" destination="EBN-Au-OLe" id="NNA-kX-4oo"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="pinIcon" id="gs7-Qv-kQ0"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="logoutButton" destination="GmO-fe-iOD" id="UYG-7Y-wjc"/>
+                        <outlet property="refreshButton" destination="74L-7v-8wT" id="VBj-fH-PvP"/>
+                        <outlet property="setPinButton" destination="gs7-Qv-kQ0" id="XJw-gD-pwa"/>
                         <outlet property="studentsTable" destination="ALO-io-CJk" id="CFI-Lk-dmA"/>
                     </connections>
                 </viewController>
@@ -250,10 +266,21 @@
                                 <action selector="logout:" destination="dff-Sa-NNS" id="PeC-ka-VxI"/>
                             </connections>
                         </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="qFq-Ke-py4">
+                                <connections>
+                                    <action selector="getStudents:" destination="dff-Sa-NNS" id="crI-t0-Pr4"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="pinIcon" id="Cin-H9-Pe9"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="logoutButton" destination="2ll-px-OzH" id="XJ9-nd-fVU"/>
                         <outlet property="mapView" destination="Ewz-mU-jtH" id="iIm-fk-jcX"/>
+                        <outlet property="refreshButton" destination="qFq-Ke-py4" id="EWx-7S-sTL"/>
+                        <outlet property="setPinButton" destination="Cin-H9-Pe9" id="McX-at-UUL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RlW-cC-HVh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -320,6 +347,7 @@
     <resources>
         <image name="listIcon" width="32" height="32"/>
         <image name="mapIcon" width="32" height="32"/>
+        <image name="pinIcon" width="32" height="32"/>
         <image name="udacityLogo" width="256" height="256"/>
     </resources>
 </document>
