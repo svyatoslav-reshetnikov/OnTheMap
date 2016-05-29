@@ -24,6 +24,9 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addressTextField.textColor = UIColor.whiteColor()
+        urlTextField.textColor = UIColor.whiteColor()
+        
         // Set background gradient
         let colors = [Functions().colorFromRGB(255, green: 153, blue: 11, alpha: 1), Functions().colorFromRGB(254, green: 111, blue: 2, alpha: 1)]
         let locations = [0.0, 0.5]
@@ -80,7 +83,12 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
                         self.mapView.setRegion(region, animated: true)
                         
                         if let addressDictionary = placemark.addressDictionary {
-                            print(addressDictionary["FormattedAddressLines"])
+                            
+                            if let addressLines = addressDictionary["FormattedAddressLines"] as? NSArray {
+                                for addressLine in addressLines {
+                                    print(addressLine)
+                                }
+                            }
                         }
                     }
                 })
