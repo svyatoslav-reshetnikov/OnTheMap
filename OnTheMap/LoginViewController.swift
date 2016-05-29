@@ -33,7 +33,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.layer.insertSublayer(backgroundGradient, atIndex: 0)
         
         // Hide keyboard when tap on background
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
 
@@ -45,11 +45,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
-    }
-    
-    // Resize background when device rotating
-    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        view.layer.sublayers?.first?.frame = self.view.bounds
     }
     
     // MARK: Actions
@@ -144,15 +139,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func dismissKeyboard() {
         view.endEditing(true)
-    }
-    
-    // Set only portrait orientation
-    override func shouldAutorotate() -> Bool {
-        return false
-    }
-    
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return [.Portrait, .PortraitUpsideDown]
     }
     
 }
