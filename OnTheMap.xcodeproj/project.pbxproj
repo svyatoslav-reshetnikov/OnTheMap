@@ -26,6 +26,7 @@
 		E1A648821CF30F4100D44E74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1A648811CF30F4100D44E74 /* Assets.xcassets */; };
 		E1A648851CF30F4100D44E74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A648831CF30F4100D44E74 /* LaunchScreen.storyboard */; };
 		E1A648981CF33C8500D44E74 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A648971CF33C8500D44E74 /* Functions.swift */; };
+		E1E18B2F1CFB1C6B00DD2565 /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18B2E1CFB1C6B00DD2565 /* InformationPostingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		E1A648841CF30F4100D44E74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1A648861CF30F4100D44E74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1A648971CF33C8500D44E74 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		E1E18B2E1CFB1C6B00DD2565 /* InformationPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				E1A6487C1CF30F4100D44E74 /* LoginViewController.swift */,
 				E135312E1CF7175C00A24655 /* StudentsMapViewController.swift */,
 				E1684F911CF860640053D4C1 /* StudentsTableViewController.swift */,
+				E1E18B2E1CFB1C6B00DD2565 /* InformationPostingViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				E1A648751CF30F4100D44E74 /* Resources */,
 				D5C0D7A093622A94264A00A2 /* 📦 Embed Pods Frameworks */,
 				0A7ACD5CF58EE3F25E94AE89 /* 📦 Copy Pods Resources */,
+				E2BA70CB5033A9DEED1AFB74 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -301,6 +305,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E2BA70CB5033A9DEED1AFB74 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -312,6 +331,7 @@
 				E1684F8D1CF84EAB0053D4C1 /* StudentAnnotation.swift in Sources */,
 				E1009EBE1CF58CDA00B4B767 /* OnTheMapFunctions.swift in Sources */,
 				E1684F921CF860640053D4C1 /* StudentsTableViewController.swift in Sources */,
+				E1E18B2F1CFB1C6B00DD2565 /* InformationPostingViewController.swift in Sources */,
 				E1009EBC1CF5860100B4B767 /* OnTheMapConstants.swift in Sources */,
 				E1A6487D1CF30F4100D44E74 /* LoginViewController.swift in Sources */,
 				E1A6487B1CF30F4100D44E74 /* AppDelegate.swift in Sources */,

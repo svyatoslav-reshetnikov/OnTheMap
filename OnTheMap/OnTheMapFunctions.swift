@@ -155,7 +155,9 @@ extension OnTheMapClient {
     private func getStudentsFromParse(limit: Int, completionHandler: (success: Bool, students: [StudentIndormation]?, errorString: String?) -> Void) {
         
         var parameters = [String:AnyObject]()
-        parameters["limit"] = limit
+        if limit != 0 {
+            parameters["limit"] = limit
+        }
         
         let url = parseUrlFromParameters(parameters, withPathExtension: Methods.StudentLocation)
         
