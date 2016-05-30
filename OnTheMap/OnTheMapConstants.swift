@@ -39,6 +39,8 @@ extension OnTheMapClient {
         
         // Session
         static let Session = "/session"
+        // User info
+        static let UserInfo = "/users"
         
         // MARK: Parse methods
         
@@ -77,6 +79,11 @@ extension OnTheMapClient {
         static let Session = "session"
         static let SessionID = "id"
         
+        // Account
+        static let Account = "account"
+        static let Key = "key"
+        
+        
         // MARK: Parse keys
         
         // Students information
@@ -94,10 +101,4 @@ extension OnTheMapClient {
         static let UpdatedAt = "updatedAt"
         
     }
-    
-    /* MARK: Poster Sizes
-    struct PosterSizes {
-        static let RowPoster = UdacityClient.instance.config.posterSizes[2]
-        static let DetailPoster = UdacityClient.instance.config.posterSizes[4]
-    }*/
 }

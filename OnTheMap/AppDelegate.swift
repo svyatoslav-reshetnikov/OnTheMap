@@ -24,6 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController = mainVC
             }
         }
+        if let userID = NSUserDefaults.standardUserDefaults().objectForKey("userID") as? String {
+            if userID != "" {
+                OnTheMapClient.instance.userID = userID
+            }
+        }
         
         return true
     }

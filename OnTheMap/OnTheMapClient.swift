@@ -20,6 +20,7 @@ class OnTheMapClient : NSObject {
     // authentication state
     var requestToken: String? = nil
     var sessionID: String? = nil
+    var userID: String? = nil
     var students = [StudentIndormation]()
     
     // MARK: Shared Instance
