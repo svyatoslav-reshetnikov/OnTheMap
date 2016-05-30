@@ -85,6 +85,33 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func facebookLogin(sender: AnyObject) {
+        
+        // Show progress bar
+        let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+        hud.mode = MBProgressHUDMode.Indeterminate
+        hud.labelText = "Loading..."
+        hud.dimBackground = true
+        
+        // Dismiss keyboard
+        dismissKeyboard()
+        
+        OnTheMapClient.instance.facebookAuth { success, errorString in
+            performUIUpdatesOnMain {
+                // Hide progress bar
+                MBProgressHUD.hideHUDForView(self.view, animated: true)
+            
+                if success {
+                    self.performSegueWithIdentifier("mainVC", sender: nil)
+                } else {
+                    if let errorString = errorString {
+                        self.showAlert(errorString)
+                    }
+                }
+            }
+        }
+    }
+    
     func showAlert(message: String) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))

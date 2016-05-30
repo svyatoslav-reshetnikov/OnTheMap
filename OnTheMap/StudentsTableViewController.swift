@@ -8,6 +8,8 @@
 
 import UIKit
 import MBProgressHUD
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class StudentsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -18,36 +20,52 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func logout(sender: AnyObject) {
         
-        lockInterface()
-        
         // Show progress bar
         let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
         hud.mode = MBProgressHUDMode.Indeterminate
         hud.labelText = "Loading..."
         hud.dimBackground = true
         
-        // Send request
-        OnTheMapClient.instance.udacityLogout() { success, errorString in
-            performUIUpdatesOnMain {
-                
-                self.unlockInterFace()
-                
-                // Hide progress bar
-                MBProgressHUD.hideHUDForView(self.view, animated: true)
-                
-                if success {
-                    // Remove current screen with animation
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let loginVC = storyboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            FBSDKLoginManager().logOut()
+            
+            // Remove current screen with animation
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let loginVC = storyboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
+            
+            let snapshot: UIView = self.view.snapshotViewAfterScreenUpdates(true)
+            loginVC.view.addSubview(snapshot)
+            UIApplication.sharedApplication().keyWindow?.rootViewController = loginVC
+            
+            Animations().scaleAndHide(snapshot)
+        }
+            
+        else {
+            lockInterface()
+            
+            // Send request
+            OnTheMapClient.instance.udacityLogout() { success, errorString in
+                performUIUpdatesOnMain {
                     
-                    let snapshot: UIView = self.view.snapshotViewAfterScreenUpdates(true)
-                    loginVC.view.addSubview(snapshot)
-                    UIApplication.sharedApplication().keyWindow?.rootViewController = loginVC
+                    self.unlockInterFace()
                     
-                    Animations().scaleAndHide(snapshot)
-                } else {
-                    if let errorString = errorString {
-                        self.showAlert(errorString)
+                    // Hide progress bar
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
+                    
+                    if success {
+                        // Remove current screen with animation
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let loginVC = storyboard.instantiateViewControllerWithIdentifier("loginVC") as! LoginViewController
+                        
+                        let snapshot: UIView = self.view.snapshotViewAfterScreenUpdates(true)
+                        loginVC.view.addSubview(snapshot)
+                        UIApplication.sharedApplication().keyWindow?.rootViewController = loginVC
+                        
+                        Animations().scaleAndHide(snapshot)
+                    } else {
+                        if let errorString = errorString {
+                            self.showAlert(errorString)
+                        }
                     }
                 }
             }

@@ -18,9 +18,9 @@ class OnTheMapClient : NSObject {
     var session = NSURLSession.sharedSession()
     
     // authentication state
-    var requestToken: String? = nil
     var sessionID: String? = nil
     var userID: String? = nil
+    var objectID: String? = nil
     var students = [StudentIndormation]()
     
     // MARK: Shared Instance
@@ -157,7 +157,7 @@ class OnTheMapClient : NSObject {
             }
             
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx!")
+                sendError("Your request returned a status code \((response as! NSHTTPURLResponse).statusCode)!")
                 return
             }
             
@@ -171,6 +171,49 @@ class OnTheMapClient : NSObject {
                 self.convertDataFromUdacityWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
             } else {
                 self.convertDataFromParseWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+            }
+        }
+        
+        task.resume()
+        
+        return task
+    }
+    
+    // MARK: PUT
+    
+    func taskForPUTMethod(request: NSMutableURLRequest, jsonBody: String, completionHandlerForPUT: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        request.HTTPMethod = "PUT"
+        request.HTTPBody = jsonBody.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            
+            func sendError(error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForPUT(result: nil, error: NSError(domain: "taskForPUTMethod", code: 1, userInfo: userInfo))
+            }
+            
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error!.localizedDescription)")
+                return
+            }
+            
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code \((response as! NSHTTPURLResponse).statusCode)!")
+                return
+            }
+            
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            // Different conver functions for Udacity and Parse responses
+            if request.URL!.absoluteString.rangeOfString(JSONBodyKeys.Udacity) != nil{
+                self.convertDataFromUdacityWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPUT)
+            } else {
+                self.convertDataFromParseWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPUT)
             }
         }
         

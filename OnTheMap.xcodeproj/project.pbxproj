@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		769EDBC00C43AA927A0F7A00 /* Pods_OnTheMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE9FB326F8F1B398BA05E57 /* Pods_OnTheMap.framework */; };
 		E1009EBA1CF585C600B4B767 /* OnTheMapClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1009EB91CF585C600B4B767 /* OnTheMapClient.swift */; };
 		E1009EBC1CF5860100B4B767 /* OnTheMapConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1009EBB1CF5860100B4B767 /* OnTheMapConstants.swift */; };
 		E1009EBE1CF58CDA00B4B767 /* OnTheMapFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1009EBD1CF58CDA00B4B767 /* OnTheMapFunctions.swift */; };
@@ -27,12 +26,12 @@
 		E1A648851CF30F4100D44E74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1A648831CF30F4100D44E74 /* LaunchScreen.storyboard */; };
 		E1A648981CF33C8500D44E74 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A648971CF33C8500D44E74 /* Functions.swift */; };
 		E1E18B2F1CFB1C6B00DD2565 /* InformationPostingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E18B2E1CFB1C6B00DD2565 /* InformationPostingViewController.swift */; };
+		F73D06CBD5B09AB03891F716 /* Pods_OnTheMap.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF659EE6A5D0C4BACD279270 /* Pods_OnTheMap.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		29FCBCB2D8E74196942A2CAA /* Pods-OnTheMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnTheMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap.debug.xcconfig"; sourceTree = "<group>"; };
-		A241098DB7A9279B3DC559A2 /* Pods-OnTheMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnTheMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap.release.xcconfig"; sourceTree = "<group>"; };
-		AFE9FB326F8F1B398BA05E57 /* Pods_OnTheMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnTheMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		443FD6A67FEF88157DCD3FDF /* Pods-OnTheMap.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnTheMap.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap.debug.xcconfig"; sourceTree = "<group>"; };
+		BF659EE6A5D0C4BACD279270 /* Pods_OnTheMap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OnTheMap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1009EB91CF585C600B4B767 /* OnTheMapClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapClient.swift; sourceTree = "<group>"; };
 		E1009EBB1CF5860100B4B767 /* OnTheMapConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapConstants.swift; sourceTree = "<group>"; };
 		E1009EBD1CF58CDA00B4B767 /* OnTheMapFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapFunctions.swift; sourceTree = "<group>"; };
@@ -54,6 +53,7 @@
 		E1A648861CF30F4100D44E74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1A648971CF33C8500D44E74 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		E1E18B2E1CFB1C6B00DD2565 /* InformationPostingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationPostingViewController.swift; sourceTree = "<group>"; };
+		F16BD9331DCE4AEFE7F8B1C9 /* Pods-OnTheMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OnTheMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,17 +61,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				769EDBC00C43AA927A0F7A00 /* Pods_OnTheMap.framework in Frameworks */,
+				F73D06CBD5B09AB03891F716 /* Pods_OnTheMap.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CAB58D7F7905A22657AE826D /* Frameworks */ = {
+		C3258E2B96F6214E399A72A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AFE9FB326F8F1B398BA05E57 /* Pods_OnTheMap.framework */,
+				BF659EE6A5D0C4BACD279270 /* Pods_OnTheMap.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -100,8 +100,8 @@
 			children = (
 				E1A648791CF30F4100D44E74 /* OnTheMap */,
 				E1A648781CF30F4100D44E74 /* Products */,
-				EC28CB4AC5AC2FD4F55AA724 /* Pods */,
-				CAB58D7F7905A22657AE826D /* Frameworks */,
+				E9FF15B0C6C1905A11E142DE /* Pods */,
+				C3258E2B96F6214E399A72A7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -177,11 +177,11 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
-		EC28CB4AC5AC2FD4F55AA724 /* Pods */ = {
+		E9FF15B0C6C1905A11E142DE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				29FCBCB2D8E74196942A2CAA /* Pods-OnTheMap.debug.xcconfig */,
-				A241098DB7A9279B3DC559A2 /* Pods-OnTheMap.release.xcconfig */,
+				443FD6A67FEF88157DCD3FDF /* Pods-OnTheMap.debug.xcconfig */,
+				F16BD9331DCE4AEFE7F8B1C9 /* Pods-OnTheMap.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -199,7 +199,6 @@
 				E1A648751CF30F4100D44E74 /* Resources */,
 				D5C0D7A093622A94264A00A2 /* 📦 Embed Pods Frameworks */,
 				0A7ACD5CF58EE3F25E94AE89 /* 📦 Copy Pods Resources */,
-				E2BA70CB5033A9DEED1AFB74 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -298,21 +297,6 @@
 			inputPaths = (
 			);
 			name = "📦 Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OnTheMap/Pods-OnTheMap-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E2BA70CB5033A9DEED1AFB74 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -452,7 +436,7 @@
 		};
 		E1A6488A1CF30F4100D44E74 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29FCBCB2D8E74196942A2CAA /* Pods-OnTheMap.debug.xcconfig */;
+			baseConfigurationReference = 443FD6A67FEF88157DCD3FDF /* Pods-OnTheMap.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = OnTheMap/Info.plist;
@@ -465,7 +449,7 @@
 		};
 		E1A6488B1CF30F4100D44E74 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A241098DB7A9279B3DC559A2 /* Pods-OnTheMap.release.xcconfig */;
+			baseConfigurationReference = F16BD9331DCE4AEFE7F8B1C9 /* Pods-OnTheMap.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = OnTheMap/Info.plist;

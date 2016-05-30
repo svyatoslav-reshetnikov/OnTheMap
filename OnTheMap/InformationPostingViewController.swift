@@ -9,6 +9,7 @@
 import UIKit
 import Material
 import MapKit
+import MBProgressHUD
 
 class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     
@@ -17,6 +18,8 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var urlTextField: TextField!
     @IBOutlet weak var submitButton: RaisedButton!
+    
+    var placemark: CLPlacemark?
     
     // Const for set keyboard margin above UITextField
     let keyboardTopMargin: CGFloat = 32
@@ -38,10 +41,6 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(tap)
     }
     
-    @IBAction func cancelAction(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
@@ -50,6 +49,60 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+    }
+    
+    @IBAction func submitPost(sender: AnyObject) {
+        
+        if let userID = OnTheMapClient.instance.userID {
+            if let placemark = placemark {
+                if urlTextField.text != "" {
+                    
+                    // Show progress bar
+                    let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+                    hud.mode = MBProgressHUDMode.Indeterminate
+                    hud.labelText = "Loading..."
+                    hud.dimBackground = true
+                    
+                    if let objectID = OnTheMapClient.instance.objectID {
+                        OnTheMapClient.instance.updateLocation(objectID, userID: userID, placemark: placemark, mediaURL: urlTextField.text!) { (success, errorString) in
+                            performUIUpdatesOnMain {
+                                // Hide progress bar
+                                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                                
+                                if success {
+                                    self.dismissViewControllerAnimated(true, completion: nil)
+                                } else {
+                                    self.showAlert(errorString!)
+                                }
+                            }
+                        }
+                    } else {
+                        OnTheMapClient.instance.postLocation(userID, placemark: placemark, mediaURL: urlTextField.text!) { (success, errorString) in
+                            performUIUpdatesOnMain {
+                                // Hide progress bar
+                                MBProgressHUD.hideHUDForView(self.view, animated: true)
+                            
+                                if success {
+                                    self.dismissViewControllerAnimated(true, completion: nil)
+                                } else {
+                                    self.showAlert(errorString!)
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    showAlert("Url is empty")
+                }
+            } else {
+                showAlert("Your place is empty")
+            }
+        } else {
+            showAlert("UserID not found")
+        }
+    }
+    
+    @IBAction func cancelAction(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     func showAlert(message: String) {
@@ -67,9 +120,13 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
                 let geocoder = CLGeocoder()
                 geocoder.geocodeAddressString(address, completionHandler: { placemarks, error in
                     if let error = error {
+                        self.placemark = nil
                         self.showAlert(error.localizedDescription)
                     }
                     if let placemarks = placemarks {
+                        
+                        self.placemark = placemarks[0]
+                        
                         // Clean the map
                         let annotationsToRemove = self.mapView.annotations.filter { $0 !== self.mapView.userLocation }
                         self.mapView.removeAnnotations( annotationsToRemove)
@@ -81,15 +138,6 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
                         let span = MKCoordinateSpanMake(0.05, 0.05)
                         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: placemark.location!.coordinate.latitude, longitude: placemark.location!.coordinate.longitude), span: span)
                         self.mapView.setRegion(region, animated: true)
-                        
-                        if let addressDictionary = placemark.addressDictionary {
-                            
-                            if let addressLines = addressDictionary["FormattedAddressLines"] as? NSArray {
-                                for addressLine in addressLines {
-                                    print(addressLine)
-                                }
-                            }
-                        }
                     }
                 })
                 }

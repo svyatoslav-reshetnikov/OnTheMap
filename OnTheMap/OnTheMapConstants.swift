@@ -83,6 +83,10 @@ extension OnTheMapClient {
         static let Account = "account"
         static let Key = "key"
         
+        // User
+        static let User = "user"
+        static let UdacityFirstName = "first_name"
+        static let UdacityLastName = "last_name"
         
         // MARK: Parse keys
         
@@ -100,5 +104,7 @@ extension OnTheMapClient {
         static let UniqueKey = "uniqueKey"
         static let UpdatedAt = "updatedAt"
         
+        // Post student
+        static let ObjectID = "objectId"
     }
 }
