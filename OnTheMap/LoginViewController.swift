@@ -85,6 +85,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func udacitySignup(sender: AnyObject) {
+        if let url = NSURL(string: OnTheMapClient.Constants.UdacitySignupURL) {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
+    
     @IBAction func facebookLogin(sender: AnyObject) {
         
         // Show progress bar

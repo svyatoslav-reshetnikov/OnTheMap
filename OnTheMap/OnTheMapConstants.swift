@@ -21,7 +21,7 @@ extension OnTheMapClient {
         // MARK: Udacity URLs
         static let UdacityHost = "www.udacity.com"
         static let UdacityPath = "/api"
-        static let UdacityAuthorizationURL = "https://www.themoviedb.org/authenticate/"
+        static let UdacitySignupURL = "https://www.udacity.com/account/auth#!/signup"
         
         // MARK: Parse keys
         static let ParseAppID = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"

@@ -82,6 +82,7 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
         hud.labelText = "Loading..."
         hud.dimBackground = true
         
+        // Download the 100 most recent locations posted by students
         OnTheMapClient.instance.getStudents(100, completionHandler: { success, errorString in
             
             performUIUpdatesOnMain {
