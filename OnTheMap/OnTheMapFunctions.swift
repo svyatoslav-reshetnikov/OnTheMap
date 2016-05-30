@@ -155,7 +155,6 @@ extension OnTheMapClient {
             if let error = error {
                 completionHandler(success: false, info: (nil, nil), errorString: error.localizedDescription)
             } else {
-                print(results)
                 if let session = results[OnTheMapClient.JSONResponseKeys.Session] as? [String: AnyObject] {
                     if let sessionID = session[OnTheMapClient.JSONResponseKeys.SessionID] as? String {
                         if let account = results[OnTheMapClient.JSONResponseKeys.Account] as? [String: AnyObject] {
