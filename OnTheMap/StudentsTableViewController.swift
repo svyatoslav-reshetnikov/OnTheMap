@@ -110,7 +110,7 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return OnTheMapClient.instance.students.count
+        return StudentCollection.instance.students.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -121,8 +121,8 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
             cell = UITableViewCell(style: .Default, reuseIdentifier: "Cell")
         }
         
-        let firstName = OnTheMapClient.instance.students[indexPath.row].firstName
-        let lastName = OnTheMapClient.instance.students[indexPath.row].lastName
+        let firstName = StudentCollection.instance.students[indexPath.row].firstName
+        let lastName = StudentCollection.instance.students[indexPath.row].lastName
         
         cell?.imageView?.image = UIImage(named: "pinIcon")
         cell!.textLabel?.text = (firstName != nil ? firstName! + " " : "") + (lastName != nil ? lastName! : "")
@@ -133,7 +133,7 @@ class StudentsTableViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        let mediaURL = OnTheMapClient.instance.students[indexPath.row].mediaURL
+        let mediaURL = StudentCollection.instance.students[indexPath.row].mediaURL
         
         if Functions().validateUrl(mediaURL) {
             let url = NSURL(string: mediaURL!)

@@ -114,7 +114,14 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
     // MARK: UITextField delegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField == addressTextField {
+            
             dismissKeyboard()
+            
+            // Show progress bar
+            let hud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+            hud.mode = MBProgressHUDMode.Indeterminate
+            hud.labelText = "Loading..."
+            hud.dimBackground = true
             
             if let address = textField.text {
                 let geocoder = CLGeocoder()
@@ -139,6 +146,8 @@ class InformationPostingViewController: UIViewController, UITextFieldDelegate {
                         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: placemark.location!.coordinate.latitude, longitude: placemark.location!.coordinate.longitude), span: span)
                         self.mapView.setRegion(region, animated: true)
                     }
+                    // Hide progress bar
+                    MBProgressHUD.hideHUDForView(self.view, animated: true)
                 })
                 }
         } else if textField == urlTextField {

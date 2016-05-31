@@ -104,7 +104,7 @@ class StudentsMapViewController: UIViewController, MKMapViewDelegate {
                 MBProgressHUD.hideHUDForView(self.view, animated: true)
                 
                 if success {
-                    for student in OnTheMapClient.instance.students {
+                    for student in StudentCollection.instance.students {
                         let studentAnnotation = StudentAnnotation(title: (student.firstName != nil ? student.firstName! + " " : "") + (student.lastName != nil ? student.lastName! : ""),
                             subtitle: student.mediaURL != nil ? student.mediaURL! : "",
                             coordinate: CLLocationCoordinate2D(latitude: (student.latitude != nil ? student.latitude! : 0.0), longitude: (student.longitude != nil ? student.longitude! : 0.0)))

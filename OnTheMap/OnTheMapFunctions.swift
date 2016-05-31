@@ -104,7 +104,7 @@ extension OnTheMapClient {
     func getStudents(limit: Int, completionHandler: (success: Bool, errorString: String?) -> Void) {
         getStudentsFromParse(limit) { success, students, errorString in
             if students != nil {
-                self.students = students!
+                StudentCollection.instance.students = students!
             }
             completionHandler(success: success, errorString: errorString)
         }
@@ -245,6 +245,9 @@ extension OnTheMapClient {
             parameters["limit"] = limit
         }
         
+        // Sort results by date
+        parameters["order"]="-updatedAt"
+        
         let url = parseUrlFromParameters(parameters, withPathExtension: Methods.StudentLocation)
         
         let request = createParseRequest(url)
@@ -263,7 +266,7 @@ extension OnTheMapClient {
                     if students.count == 0 {
                         completionHandler(success: false, students: nil, errorString: "No students")
                     } else {
-                        self.students = students
+                        StudentCollection.instance.students = students
                         completionHandler(success: true, students: students, errorString: nil)
                     }
                 } else {

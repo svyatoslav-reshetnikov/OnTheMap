@@ -81,7 +81,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.showAlert("Password is empty!")
             }
         } else {
-            self.showAlert("Login is invalid!")
+            self.showAlert("Login is empty!")
         }
     }
     

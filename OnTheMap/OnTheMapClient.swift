@@ -21,7 +21,6 @@ class OnTheMapClient : NSObject {
     var sessionID: String? = nil
     var userID: String? = nil
     var objectID: String? = nil
-    var students = [StudentIndormation]()
     
     // MARK: Shared Instance
     static let instance = OnTheMapClient()
@@ -61,7 +60,7 @@ class OnTheMapClient : NSObject {
             }
             
             guard error == nil else {
-                sendError("There was an error with your request: \(error)")
+                sendError("There was an error with your request: \(error!.localizedDescription)")
                 return
             }
             
@@ -108,7 +107,12 @@ class OnTheMapClient : NSObject {
             }
             
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code \((response as! NSHTTPURLResponse).statusCode)!")
+                let response = response as! NSHTTPURLResponse
+                if response.statusCode == 403 {
+                    sendError("Invalid credentials!")
+                } else {
+                    sendError("Your request returned a status code \(response.statusCode)!")
+                }
                 return
             }
             

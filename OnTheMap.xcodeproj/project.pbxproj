@@ -14,6 +14,7 @@
 		E1009ECB1CF5B00800B4B767 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1009EC41CF5B00800B4B767 /* Roboto-Regular.ttf */; };
 		E1009ECC1CF5B00800B4B767 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1009EC51CF5B00800B4B767 /* Roboto-Thin.ttf */; };
 		E1009ECF1CF5BCCA00B4B767 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1009ECE1CF5BCCA00B4B767 /* GCDBlackBox.swift */; };
+		E10B0FDC1CFD81620085CDFA /* StudentCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10B0FDB1CFD81620085CDFA /* StudentCollection.swift */; };
 		E135312F1CF7175C00A24655 /* StudentsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E135312E1CF7175C00A24655 /* StudentsMapViewController.swift */; };
 		E13531311CF72AAA00A24655 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13531301CF72AAA00A24655 /* Animations.swift */; };
 		E1684F8B1CF827CB0053D4C1 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1684F8A1CF827CB0053D4C1 /* StudentInformation.swift */; };
@@ -39,6 +40,7 @@
 		E1009EC41CF5B00800B4B767 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Regular.ttf"; path = "Res/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		E1009EC51CF5B00800B4B767 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Roboto-Thin.ttf"; path = "Res/Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		E1009ECE1CF5BCCA00B4B767 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		E10B0FDB1CFD81620085CDFA /* StudentCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentCollection.swift; sourceTree = "<group>"; };
 		E135312E1CF7175C00A24655 /* StudentsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsMapViewController.swift; sourceTree = "<group>"; };
 		E13531301CF72AAA00A24655 /* Animations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		E1684F8A1CF827CB0053D4C1 /* StudentInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			children = (
 				E1684F8A1CF827CB0053D4C1 /* StudentInformation.swift */,
 				E1684F8C1CF84EAB0053D4C1 /* StudentAnnotation.swift */,
+				E10B0FDB1CFD81620085CDFA /* StudentCollection.swift */,
 			);
 			name = Student;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				E13531311CF72AAA00A24655 /* Animations.swift in Sources */,
 				E1A648981CF33C8500D44E74 /* Functions.swift in Sources */,
 				E1009ECF1CF5BCCA00B4B767 /* GCDBlackBox.swift in Sources */,
+				E10B0FDC1CFD81620085CDFA /* StudentCollection.swift in Sources */,
 				E1684F8B1CF827CB0053D4C1 /* StudentInformation.swift in Sources */,
 				E135312F1CF7175C00A24655 /* StudentsMapViewController.swift in Sources */,
 			);
