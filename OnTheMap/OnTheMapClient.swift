@@ -75,10 +75,10 @@ class OnTheMapClient : NSObject {
             }
             
             // Different conver functions for Udacity and Parse responses
-            if request.URL!.absoluteString.rangeOfString(JSONBodyKeys.Udacity) != nil{
-                self.convertDataFromUdacityWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
-            } else {
+            if request.URL!.absoluteString.rangeOfString(JSONBodyKeys.Parse) != nil{
                 self.convertDataFromParseWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
+            } else {
+                self.convertDataFromUdacityWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
             }
         }
         
@@ -122,10 +122,10 @@ class OnTheMapClient : NSObject {
             }
             
             // Different conver functions for Udacity and Parse responses
-            if request.URL!.absoluteString.rangeOfString(JSONBodyKeys.Udacity) != nil{
-                self.convertDataFromUdacityWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
-            } else {
+            if request.URL!.absoluteString.rangeOfString(JSONBodyKeys.Parse) != nil {
                 self.convertDataFromParseWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+            } else {
+                self.convertDataFromUdacityWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
             }
         }
         
@@ -164,10 +164,10 @@ class OnTheMapClient : NSObject {
             }
             
             // Different conver functions for Udacity and Parse responses
-            if request.URL!.absoluteString.rangeOfString(JSONBodyKeys.Udacity) != nil{
-                self.convertDataFromUdacityWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPUT)
-            } else {
+            if request.URL!.absoluteString.rangeOfString(JSONBodyKeys.Parse) != nil {
                 self.convertDataFromParseWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPUT)
+            } else {
+                self.convertDataFromUdacityWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPUT)
             }
         }
         
@@ -205,10 +205,10 @@ class OnTheMapClient : NSObject {
             }
             
             // Different conver functions for Udacity and Parse responses
-            if request.URL!.absoluteString.rangeOfString(JSONBodyKeys.Udacity) != nil{
-                self.convertDataFromUdacityWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForDELETE)
-            } else {
+            if request.URL!.absoluteString.rangeOfString(JSONBodyKeys.Parse) != nil {
                 self.convertDataFromParseWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForDELETE)
+            } else {
+                self.convertDataFromUdacityWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForDELETE)
             }
         }
         

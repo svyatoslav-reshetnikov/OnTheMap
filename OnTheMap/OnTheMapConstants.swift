@@ -28,8 +28,8 @@ extension OnTheMapClient {
         static let ParseApiKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
         
         // MARK: Parse URLs
-        static let ParseHost = "api.parse.com"
-        static let ParsePath = "/1/classes"
+        static let ParseHost = "parse.udacity.com"
+        static let ParsePath = "/parse/classes"
     }
     
     // MARK: Methods
@@ -68,6 +68,7 @@ extension OnTheMapClient {
         static let Udacity = "udacity"
         static let Username = "username"
         static let Password = "password"
+        static let Parse = "parse"
     }
     
     // MARK: JSON Response Keys
